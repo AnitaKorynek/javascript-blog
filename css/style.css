@@ -14,6 +14,9 @@ body {
   line-height: 1.7;
 }
 
+.active {
+    display: block;
+}
 .container {
   max-width: 1140px;
   margin: 0 auto;
