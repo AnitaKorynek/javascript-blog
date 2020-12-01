@@ -36,11 +36,12 @@ function titleClickHandler(event){
   targetArticle.classList.add('active');
 }
 
-const links = document.querySelectorAll('.titles a');
+/*const links = document.querySelectorAll('.titles a');
+console.log(links);
 
 for(let link of links){
   link.addEventListener('click', titleClickHandler);
-}
+}*/
 
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
@@ -74,8 +75,16 @@ function generateTitleLinks(){
     /* insert link into titleList */
         html = html + linkHTML;
         
+        
     }
     titleList.innerHTML = html;
+    
+    const links = document.querySelectorAll('.titles a');
+    console.log(links);
+
+    for(let link of links){
+    link.addEventListener('click', titleClickHandler);
+   }
 }
 
 generateTitleLinks();
