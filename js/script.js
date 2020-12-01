@@ -48,24 +48,27 @@ const optArticleSelector = '.post',
 
 function generateTitleLinks(){
 
-  /* remove contents of titleList */
+  /* [DONE] remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector);
     titleList.innerHTML = '';
 
-  /* for each article */
+  /*  for each article */
     const articles = document.querySelectorAll(optArticleSelector);
     
     for(let article of articles){
         
-    /* get the article id */
+    /* [DONE] get the article id */
      const articleId = article.getAttribute('id');
 
-    /* find the title element */
+    /* [DONE]find the title element */
+        const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
     /* get the title from the title element */
+         
 
     /* create HTML of the link */
-
+        const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+        console.log('działa'); //co wpisać żeby zobaczyć działanie?
     /* insert link into titleList */
     }
 }
