@@ -55,6 +55,8 @@ function generateTitleLinks(){
   /*  for each article */
     const articles = document.querySelectorAll(optArticleSelector);
     
+    let html = '';
+    
     for(let article of articles){
         
     /* [DONE] get the article id */
@@ -70,7 +72,10 @@ function generateTitleLinks(){
         const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
         console.log('działa'); //co wpisać żeby zobaczyć działanie?
     /* insert link into titleList */
+        html = html + linkHTML;
+        
     }
+    titleList.innerHTML = html;
 }
 
 generateTitleLinks();
