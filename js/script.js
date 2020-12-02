@@ -2,9 +2,9 @@
 
 'use strict'; 
 
-function titleClickHandler(event){
+function titleClickHandler(event){   
   event.preventDefault();
-  const clickedElement = this;
+  const clickedElement = this;       //  oznacza element któremu jest nadany listener
   console.log('Link was clicked!');
   
   
@@ -36,7 +36,7 @@ function titleClickHandler(event){
   targetArticle.classList.add('active');
 }
 
-/*const links = document.querySelectorAll('.titles a');
+/*const links = document.querySelectorAll('.titles a');  //przeniesiona (zadanie ze znalezieniem buga)
 console.log(links);
 
 for(let link of links){
@@ -45,31 +45,33 @@ for(let link of links){
 
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles';
+  optTitleListSelector = '.titles',
+  optArticleTagsSelector = '.post-tags .list';
+
 
 function generateTitleLinks(){
 
   /* [DONE] remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);
-  titleList.innerHTML = '';
+  titleList.innerHTML = '';   // czyszczenie zawartości? czy my tego nie zrobilismy ręcznie?
 
   /*  for each article */
   const articles = document.querySelectorAll(optArticleSelector);
-  let html = '';
+  let html = '';  
   for(let article of articles){
         
     /* [DONE] get the article id */
     const articleId = article.getAttribute('id');
 
     /* [DONE]find the title element */
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML; 
 
     /* get the title from the title element */
          
 
     /* create HTML of the link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-    console.log('działa'); //co wpisać żeby zobaczyć działanie?
+    console.log('działa'); 
     /* insert link into titleList */
     html = html + linkHTML;
   }
@@ -86,9 +88,11 @@ function generateTitleLinks(){
 generateTitleLinks();
 
 function generateTags(){
-  /* find all articles */
+  /* [DONE] find all articles */
+  const articles = document.querySelectorAll(optArticleSelector);
 
   /* START LOOP: for every article: */
+  for(let article of articles){
 
   /* find tags wrapper */
 
@@ -110,5 +114,6 @@ function generateTags(){
 
   /* END LOOP: for every article: */
 }
+
 
 generateTags();
