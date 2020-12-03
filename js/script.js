@@ -95,6 +95,7 @@ function generateTags(){
   for(let article of articles){
 
   /* find tags wrapper */
+  const tagsWrapper = article.querySelector(optArticleTagsSelector);
 
   /* make html variable with empty string */
 
@@ -113,6 +114,7 @@ function generateTags(){
   /* insert HTML of all the links into the tags wrapper */
 
   /* END LOOP: for every article: */
+
 }
 
 
