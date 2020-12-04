@@ -52,7 +52,7 @@ const optArticleSelector = '.post',
 function generateTitleLinks(customSelector = ''){ // zmiana funkcji, argument customSelector, który domyślnie jest pustym ciągiem znaków
 
   /* [DONE] remove contents of titleList */
-  const titleList = document.querySelector(optTitleListSelector);
+  const titleList = document.querySelector(optTitleListSelector + customSelector);
   titleList.innerHTML = '';   // czyszczenie zawartości? czy my tego nie zrobilismy ręcznie?
 
   /*  for each article */
@@ -122,7 +122,7 @@ function generateTags(){
 
       /* add generated code to html variable */
       html = html + linkHtml;
-  
+    
     /* END LOOP: for each tag */
     }
     /* insert HTML of all the links into the tags wrapper */
@@ -159,7 +159,7 @@ function tagClickHandler(event){
   /* START LOOP: for each active tag link */
   for(let activeTagLink of activeTagLinks){
     /* remove class active */
-    activeTagLink.classList.remove('.active');
+    activeTagLink.classList.remove('active');
 
   /* END LOOP: for each active tag link */
   }
@@ -175,6 +175,7 @@ function tagClickHandler(event){
   generateTitleLinks('[data-tags~="' + tag + '"]'); // zapis ~= znajdź elementy, które mają atrybut data-tags, który ma w sobie słowo 'tag'"
 }
 
+
 function addClickListenersToTags(){
   /* find all links to tags */
   const linkTags = document.querySelectorAll('a[href^="#tag-"]');
@@ -183,6 +184,7 @@ function addClickListenersToTags(){
     /* add tagClickHandler as event listener for that link */
   linkTag.addEventListener('click', tagClickHandler);
   /* END LOOP: for each link */
+}
 }
 
 addClickListenersToTags();
