@@ -126,7 +126,7 @@ function generateTags(){
   /* END LOOP: for each tag */
   }
   /* insert HTML of all the links into the tags wrapper */
-  const tagList = document.querySelectorAll('a[href^="#tag-"]');
+  const tagList = document.querySelectorAll('a[href^="#tag-"]'); //^= oznacza atrybut href zaczynający się od "#tag-"
   for(let tag of tagList) {
   tag.addEventListener('click', titleClickHandler);
   }
@@ -149,10 +149,13 @@ function tagClickHandler(event){
   const clickedElement = this;       //  oznacza element któremu jest nadany listener
 
   /* make a new constant "href" and read the attribute "href" of the clicked element */
+  const href = clickedElement.getAttribute('href');
 
   /* make a new constant "tag" and extract tag from the "href" constant */
+  const tag = href.replace('#tag-', '');
 
   /* find all tag links with class active */
+  const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
 
   /* START LOOP: for each active tag link */
 
