@@ -98,41 +98,40 @@ function generateTags(){
   /* START LOOP: for every article: */
   for(let article of articles){
 
-  /* [DONE]find tags wrapper */
-  const tagsWrapper = article.querySelector(optArticleTagsSelector);
+    /* [DONE]find tags wrapper */
+    const tagsWrapper = article.querySelector(optArticleTagsSelector);
 
-  /* [DONE] make html variable with empty string */
-  let html = '';
+    /* [DONE] make html variable with empty string */
+    let html = '';
 
-  /* [DONE] get tags from data-tags attribute */
-  const articleTags = article.getAttribute('data-tags');
-  console.log(articleTags);
+    /* [DONE] get tags from data-tags attribute */
+    const articleTags = article.getAttribute('data-tags');
+    console.log(articleTags);
 
-  /* split tags into array */
-  const articleTagsArray = articleTags.split(' ');
-  console.log(articleTagsArray);
+    /* split tags into array */
+    const articleTagsArray = articleTags.split(' ');
+    console.log(articleTagsArray);
 
 
-  /* START LOOP: for each tag */
-  for(let tag of articleTagsArray){
-  console.log(tag);
-  /* generate HTML of the link */
-  const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</span></a></li>';
-  console.log(linkHTML);
+    /* START LOOP: for each tag */
+    for(let tag of articleTagsArray){
+      console.log(tag);
+      /* generate HTML of the link */
+      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</span></a></li>';
+      console.log(linkHTML);
 
-  /* add generated code to html variable */
-  html = html + linkHtml;
+      /* add generated code to html variable */
+      html = html + linkHtml;
   
-  /* END LOOP: for each tag */
-  }
-  /* insert HTML of all the links into the tags wrapper */
-  const tagList = document.querySelectorAll('a[href^="#tag-"]'); //^= oznacza atrybut href zaczynający się od "#tag-"
-  for(let tag of tagList) {
-  tag.addEventListener('click', titleClickHandler);
-  }
+    /* END LOOP: for each tag */
+    }
+    /* insert HTML of all the links into the tags wrapper */
+    const tagList = document.querySelectorAll('a[href^="#tag-"]'); //^= oznacza atrybut href zaczynający się od "#tag-"
+    for(let tag of tagList) {
+      tag.addEventListener('click', titleClickHandler);
+    }
 
-  /* END LOOP: for every article: */
-
+    /* END LOOP: for every article: */
 }
 
 };
@@ -165,7 +164,7 @@ function tagClickHandler(event){
   /* END LOOP: for each active tag link */
   }
   /* find all tag links with "href" attribute equal to the "href" constant */
-  const foundTagLinks = document.querySelectorAll();  // do czego się odwołać + zapis?
+  const foundTagLinks = document.querySelectorAll('a[href="' + href + '"]');  // do czego się odwołać + zapis? // wszystkie linki, które mają taki sam atrybut href, jak kliknięty link
   /* START LOOP: for each found tag link */
   for(let foundTagLink of foundTagLinks){
     /* add class active */
@@ -173,7 +172,7 @@ function tagClickHandler(event){
   /* END LOOP: for each found tag link */
   }
   /* execute function "generateTitleLinks" with article selector as argument */
-  generateTitleLinks(); // do czego się odwołać + zapis?$
+  generateTitleLinks('[data-tags~="' + tag + '"]'); // zapis ~= znajdź elementy, które mają atrybut data-tags, który ma w sobie słowo 'tag'"
 }
 
 function addClickListenersToTags(){
