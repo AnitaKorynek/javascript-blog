@@ -49,7 +49,7 @@ const optArticleSelector = '.post',
   optArticleTagsSelector = '.post-tags .list';
 
 
-function generateTitleLinks(){
+function generateTitleLinks(customSelector = ''){ // zmiana funkcji, argument customSelector, który domyślnie jest pustym ciągiem znaków
 
   /* [DONE] remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);
@@ -177,11 +177,11 @@ function tagClickHandler(event){
 
 function addClickListenersToTags(){
   /* find all links to tags */
-
+  const linkTags = document.querySelectorAll('a[href^="#tag-"]');
   /* START LOOP: for each link */
-
+  for(let linkTag of linkTags){
     /* add tagClickHandler as event listener for that link */
-  
+  linkTag.addEventListener('click', tagClickHandler);
   /* END LOOP: for each link */
 }
 
