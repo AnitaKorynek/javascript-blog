@@ -200,18 +200,18 @@ function generateAuthors(){
   /* START LOOP: for every author: */
   for(let article of articles){
     /* find authors */
-     const authorWrapper = article.querySelector(optArticleAuthorSelector);
-     console.log(authorWrapper);
+    const authorWrapper = article.querySelector(optArticleAuthorSelector);
+    console.log(authorWrapper);
     /* make html variable with empty string */
-     let html = '';
+    let html = '';
     /* get authors from data-authors attribute */
     const tagAuthor = article.getAttribute('data-author');
     console.log(tagAuthor);
     /* generate html of the link */
-     const linkHTML = '<li><a href="#author-' + tagAuthor + '">' + tagAuthor + '</a></li>'; 
+    const linkHTML = '<li><a href="#author-' + tagAuthor + '">' + tagAuthor + '</a></li>'; 
       
     /* add generate code to html variable */
-     html = html + linkHTML;
+    html = html + linkHTML;
     /* insert HTML of all the links into the tags wrapper */
     authorWrapper.innerHTML = html;
   /* END LOOP: for every author: */
