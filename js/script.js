@@ -220,15 +220,60 @@ function generateAuthors(){
 generateAuthors();
 
 
-function addClickListenersToAuthors(){
-/* find all links to authors */
-  const linkAuthors = document.querySelectorAll('a[href^="#author-"]');
-  /* START LOOP: for each link */
-  for(let linkAuthor of linkAuthors){
-  /* add authorClickHandler as event listener for that link */
-    linkAuthor.addEventListener('click', authorClickHandler);
-  /* END LOOP: for each link */
+
+
+
+
+function authorClickHandler(event){
+  /*  prevent default action for this event */
+  event.preventDefault();
+
+  /* make new constant named "clickedElement" and give it the value of "this" */
+  const clickedElement = this;       //  oznacza element któremu jest nadany listener
+  
+  /* make a new constant "href" and read the attribute "href" of the clicked element */
+  const href = clickedElement.getAttribute('href');
+    
+  
+  /* make a new constant "tag" and extract tag from the "href" constant */
+  const tag = href.replace('#author-', '');
+  
+  /* find all author links with class active */
+  const activeAuthorLinks = document.querySelectorAll('a.active[href^="#author-"]');
+  
+  /* START LOOP: for each active author link */
+  for(let activeAuthorLink of activeAuthorLinks){
+    /* remove class active */
+    activeAuthorLink.classList.remove('active');
+  
+    /* END LOOP: for each active author link */
   }
+  /* find all author links with "href" attribute equal to the "href" constant */
+  const foundAuthorLinks = document.querySelectorAll('a[href="' + href + '"]');  // do czego się odwołać + zapis? // wszystkie linki, które mają taki sam atrybut href, jak kliknięty link
+  console.log(foundAuthorLinks);
+  /* START LOOP: for each found author link */
+  for(let foundAuthorLink of foundAuthorLinks){
+    /* add class active */
+    foundAuthorLink.classList.add('active');
+    /* END LOOP: for each found author link */
+  }
+  /* execute function "generateTitleLinks" with article selector as argument */
+  generateTitleLinks('[data-author="' + tag + '"]'); // zapis ~= znajdź elementy, które mają atrybut data-tags, który ma w sobie słowo 'tag'"
 }
 
-addClickListenersToAuthors();
+  
+
+
+
+function addClickListenersToAuthors(){
+  /* find all links to authors */
+    const linkAuthors = document.querySelectorAll('a[href^="#author-"]');
+    console.log(linkAuthors);
+    /* START LOOP: for each link */
+    for(let linkAuthor of linkAuthors){
+    /* add authorClickHandler as event listener for that link */
+      linkAuthor.addEventListener('click', authorClickHandler);
+    /* END LOOP: for each link */
+    }
+  }
+  addClickListenersToAuthors();
