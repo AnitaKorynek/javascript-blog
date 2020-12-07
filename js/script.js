@@ -204,7 +204,7 @@ function generateAuthors(){
     /* find authors */
      const author = article.querySelector(optArticleAuthorSelector);
     /* make html variable with empty string */
-
+     let html = '';
     /* get authors from data-authors attribute */
 
     /* generate html of the link */
